@@ -2,6 +2,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import products from './data/products.js';
+import connectDB from './config/db.js';
+import colors from 'colors'
+
+connectDB();
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -20,4 +25,4 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(colors.yellow(`Server running on port ${port}`)));
