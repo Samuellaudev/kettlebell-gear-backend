@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Kettlebell - Tiger (Blue)',
     image: '/images/kettlebell_animals/1.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Kettlebell - Bear (Dark Yellow)',
     image: '/images/kettlebell_animals/2.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Kettlebell - Tiger (Dark Blue)',
     image: '/images/kettlebell_animals/3.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Kettlebell - Lion (Yellow)',
     image: '/images/kettlebell_animals/4.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Kettlebell - Bear (Yellow + Blue)',
     image: '/images/kettlebell_animals/5.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Kettlebell - Tiger (Dark+ Yellow + Blue)',
     image: '/images/kettlebell_animals/6.jpg',
     description:
