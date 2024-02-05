@@ -4,6 +4,7 @@ import express from 'express';
 import colors from 'colors'
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
+import cors from 'cors';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('API is running...');
