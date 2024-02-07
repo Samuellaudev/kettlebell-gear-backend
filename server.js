@@ -11,7 +11,6 @@ import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -20,9 +19,16 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-app.use(cors())
+
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS",
+  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+	optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('API is running...');
