@@ -2,6 +2,8 @@
 
 A dynamic eCommerce platform leveraging the MERN Stack & Redux for seamless online retail operations. Built with MongoDB, Express, React, Node.js, and Redux, it offers a scalable solution for managing inventory, processing transactions, and enhancing the shopping experience.
 
+![test](https://raw.githubusercontent.com/Samuellaudev/samuellaudev/master/public/images/projects/Kettlebell_Gear_MERN_Stack.png?raw=true)
+
 ## 🔗 URL
 
 [MERN Stack & Redux - eCommerce Platform](https://www.kettlebell-gear.com/)
