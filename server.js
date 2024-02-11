@@ -5,6 +5,8 @@ import colors from 'colors'
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -29,6 +31,15 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15mins
+  max: 50 // number of requests can be made within 15mins
+})
+if (process.env.NODE_ENV !== 'development') { 
+  app.use(limiter)
+  app.set('trust proxy', 1)
+}
 
 app.get('/', (req, res) => {
   res.send('API is running...');
