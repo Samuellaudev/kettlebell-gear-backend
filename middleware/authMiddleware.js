@@ -12,7 +12,15 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-      req.user = await User.findById(decoded.userId).select('-password')
+      const { userId, isVerified } = decoded
+
+      if (!isVerified) {
+        // return res.status(403).json({ message: 'Please verify your email.' });
+        res.status(401)
+        throw new Error('Please verify your email.')
+      }
+
+      req.user = await User.findById(userId).select('-password')
       
       next()
     } catch (error) {

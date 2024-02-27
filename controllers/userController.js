@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import generateToken from '../utils/generateToken.js';
+import { v4 as uuid } from 'uuid';
+import sendEmail from '../utils/sendEmail.js';
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -39,11 +41,35 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exists');
   }
 
+  const verificationString = uuid();
+
   const user = await User.create({
     name,
     email,
     password,
+    verificationString
   });
+
+  try {
+    await sendEmail({
+      from: `${process.env.SENDER_NAME} <${process.env.FORWARDEMAIL_EMAIL}>`,
+      to: email,
+      bcc: process.env.FORWARDEMAIL_EMAIL,
+      subject: 'Please verify your email',
+      text: `
+      HI ${name},
+
+      Thanks for signing up! To verify your email, please click here:
+      ${process.env.FRONTEND_URL }/emails/verify-email/${ verificationString }
+      
+      Cheers,
+      ${process.env.SENDER_NAME}
+      `,
+    });
+  } catch (error) {
+    res.status(400);
+    throw new Error('Email not sent');
+  }
 
   if (user) {
     generateToken(res, user._id);
@@ -53,6 +79,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isVerified: user.isVerified
     });
   } else {
     res.status(400);
