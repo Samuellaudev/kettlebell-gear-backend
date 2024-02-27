@@ -26,7 +26,7 @@ const testEmailRoute = asyncHandler(async (req, res) => {
   } else {
     console.log(e);
     res.sendStatus(500);
-    throw new Error('Email not sent');
+    throw new Error('Test email not sent');
   }	
 })
 
@@ -35,7 +35,7 @@ const testEmailRoute = asyncHandler(async (req, res) => {
 // @access Private
 const verifyEmail = asyncHandler(async (req, res) => {
   const { verificationString } = req.body;
-console.log('req.body', req.body);
+
   const user = await User.findOne({ verificationString });
 
   if (!user) {
