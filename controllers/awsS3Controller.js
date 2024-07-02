@@ -14,7 +14,7 @@ const s3Client = new S3Client({
 });
 
 // @desc    Retrieve image file from AWS S3 bucket (Cyclic)
-// @route   GET /api/aws-s3/:imgName
+// @route   GET /api/images/aws-s3/:imgName
 // @access  Private
 const retrieveImage = asyncHandler(async (req, res) => {
   const { imgName } = req.params;
@@ -44,7 +44,7 @@ const retrieveImage = asyncHandler(async (req, res) => {
 })
 
 // @desc    Upload image file to AWS S3 bucket (Cyclic)
-// @route   POST /api/aws-s3/upload
+// @route   POST /api/images/upload/aws-s3
 // @access  Private
 const uploadImage = async (req, res) => { 
   const uploadFileToS3 = async (fileBuffer, fileName) => {  

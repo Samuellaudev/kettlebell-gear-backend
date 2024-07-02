@@ -54,7 +54,7 @@ app.get('/api/config/paypal', (req, res) =>
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/aws-s3', uploadRoutes);
+app.use('/api/images', uploadRoutes);
 app.use('/api/emails', emailRoutes);
 app.use('/api/google', googleRoutes)
 

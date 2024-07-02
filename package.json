@@ -17,6 +17,7 @@
     "@aws-sdk/s3-request-presigner": "^3.504.0",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.2.0",
     "colors": "^1.4.0",
     "cookie": "^0.6.0",
     "cookie-parser": "^1.4.6",
